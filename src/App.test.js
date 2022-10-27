@@ -1,8 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import store from './store';
 
 test('renders learn react link', () => {
-  render(<App />);
+  render(<Provider store={store}><BrowserRouter><App /></BrowserRouter> </Provider>);
   
   const title = screen.getByText(/why do we need test ?/i)
   expect(title).toBeInTheDocument()
